@@ -86,12 +86,12 @@ const Register = () => {
         <div className="countdown-warning">
           <div className="countdown-header">
             <span className="warning-icon">⚠️</span>
-            <h3>TIME SENSITIVE OFFER</h3>
+            <h3>LIMITED TIME</h3>
           </div>
           <div className="countdown-display">
             <div className="countdown-time">{formatTime(timeLeft)}</div>
             <p className="countdown-text">
-              <strong>HURRY!</strong> Complete registration within 1 hour or your profit opportunity will be <strong>TERMINATED!</strong>
+              Complete registration quickly to secure your spot!
             </p>
           </div>
         </div>

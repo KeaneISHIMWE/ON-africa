@@ -4,7 +4,45 @@ import './App.css';
 
 const Landing = () => {
   const [timeLeft, setTimeLeft] = useState(3600); // 1 hour in seconds
+  const [notifications, setNotifications] = useState([]);
   const navigate = useNavigate();
+
+  const names = [
+    'Sarah Johnson', 'David Smith', 'Maria Garcia', 'John Wilson', 'Anna Brown',
+    'Michael Davis', 'Lisa Anderson', 'James Miller', 'Jennifer Taylor', 'Robert Johnson',
+    'Patricia Wilson', 'Christopher Lee', 'Michelle Martin', 'Daniel Garcia', 'Jessica Davis',
+    'Matthew Rodriguez', 'Ashley Martinez', 'Anthony Hernandez', 'Amanda Lopez', 'Mark Anderson',
+    'Stephanie Thomas', 'Joshua Jackson', 'Melissa White', 'Andrew Harris', 'Deborah Martin',
+    'Kenneth Thompson', 'Dorothy Garcia', 'Paul Martinez', 'Lisa Robinson', 'Steven Clark',
+    'Nancy Rodriguez', 'Brian Lewis', 'Betty Lee', 'Edward Walker', 'Helen Hall',
+    'Ronald Allen', 'Sandra Young', 'Donald King', 'Donna Wright', 'George Lopez',
+    'Carol Hill', 'Kevin Scott', 'Ruth Green', 'Jason Adams', 'Sharon Baker',
+    'Jeff Nelson', 'Cynthia Carter', 'Ryan Mitchell', 'Angela Perez', 'Jacob Roberts',
+    'Brenda Turner', 'Gary Phillips', 'Emma Campbell', 'Nicholas Parker', 'Olivia Evans',
+    'Eric Edwards', 'Megan Collins', 'Jonathan Stewart', 'Catherine Sanchez', 'Stephen Morris',
+    'Samantha Rogers', 'Larry Reed', 'Debra Cook', 'Justin Bailey', 'Rachel Rivera',
+    'Scott Cooper', 'Carolyn Richardson', 'Brandon Cox', 'Janet Howard', 'Benjamin Ward',
+    'Virginia Torres', 'Samuel Peterson', 'Maria Gray', 'Gregory Ramirez', 'Heather James',
+    'Frank Watson', 'Diane Brooks', 'Raymond Kelly', 'Julie Sanders', 'Alexander Price',
+    'Joyce Bennett', 'Patrick Wood', 'Christina Barnes', 'Jack Ross', 'Kathleen Henderson',
+    'Dennis Coleman', 'Amy Jenkins', 'Jerry Perry', 'Anna Powell', 'Tyler Long',
+    'Frances Patterson', 'Aaron Hughes', 'Marie Flores', 'Henry Washington', 'Doris Butler',
+    'Jose Simmons', 'Christina Foster', 'Douglas Gonzales', 'Jacqueline Bryant', 'Nathan Alexander',
+    'Gloria Russell', 'Peter Griffin', 'Teresa Diaz', 'Zachary Hayes', 'Sara Myers',
+    'Kyle Ford', 'Janice Hamilton', 'Walter Graham', 'Judy Sullivan', 'Harold Wallace',
+    'Theresa Woods', 'Jeremy West', 'Cheryl Cole', 'Wayne Jordan', 'Mildred Owens',
+    'Christian Reynolds', 'Katherine Fisher', 'Sean Ellis', 'Gloria Stone', 'Elijah Boyd',
+    'Jean Mason', 'Ralph Hunt', 'Alice Dixon', 'Mason Rice', 'Madison Wells'
+  ];
+
+  const getRandomAmount = () => {
+    const amounts = [15000, 18000, 22000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000];
+    return amounts[Math.floor(Math.random() * amounts.length)];
+  };
+
+  const getRandomName = () => {
+    return names[Math.floor(Math.random() * names.length)];
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -17,7 +55,25 @@ const Landing = () => {
       });
     }, 1000);
 
-    return () => clearInterval(timer);
+    // Random notifications
+    const notificationTimer = setInterval(() => {
+      const newNotification = {
+        id: Date.now() + Math.random(),
+        name: getRandomName(),
+        amount: getRandomAmount(),
+        timestamp: Date.now()
+      };
+      
+      setNotifications(prev => {
+        const updated = [newNotification, ...prev].slice(0, 3); // Keep only 3 latest
+        return updated;
+      });
+    }, 4000); // Show new notification every 4 seconds
+
+    return () => {
+      clearInterval(timer);
+      clearInterval(notificationTimer);
+    };
   }, []);
 
   const formatTime = (seconds) => {
@@ -29,6 +85,20 @@ const Landing = () => {
 
   return (
     <div className="landing-container">
+      {/* Floating Notifications */}
+      <div className="floating-notifications">
+        {notifications.map(notification => (
+          <div key={notification.id} className="earning-notification">
+            <div className="notification-content">
+              <span className="notification-icon">🎉</span>
+              <div className="notification-text">
+                <strong>{notification.name}</strong> has earned <strong>{notification.amount.toLocaleString()} FRW</strong>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
       <div className="landing-content">
         <div className="landing-header">
           <h1 className="landing-title">ON AFRICA</h1>
@@ -68,8 +138,6 @@ const Landing = () => {
               <div className="countdown-number">{formatTime(timeLeft)}</div>
               <p className="countdown-warning">
                 Registration closes soon! Don't miss your chance to start earning today.
-                <br />
-                <strong>After this timer expires, your profit opportunity will be terminated!</strong>
               </p>
             </div>
           </div>
@@ -88,20 +156,6 @@ const Landing = () => {
           >
             Already a Member? Login
           </button>
-        </div>
-
-        <div className="testimonial-section">
-          <h3>💬 What Our Members Say</h3>
-          <div className="testimonials">
-            <div className="testimonial">
-              <p>"I earned 50,000 FRW in my first week!"</p>
-              <span>- Sarah K.</span>
-            </div>
-            <div className="testimonial">
-              <p>"Best investment I've ever made."</p>
-              <span>- Jean P.</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

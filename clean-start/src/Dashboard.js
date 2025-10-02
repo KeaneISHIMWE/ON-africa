@@ -50,8 +50,9 @@ const Dashboard = () => {
   
   const handleCashout = () => {
     if (!user.hasMembership) {
-      setMessage('⚠️ Membership Required: You must purchase a premium membership (18,800 FRW) before you can make cashouts. Click "Upgrade to Premium" to get started.');
+      setMessage('⚠️ Membership Required: You must purchase a premium membership card (18,800 FRW) before you can make any cashouts. Please upgrade to premium first.');
       setShowMembershipModal(true);
+      return;
     } else {
       setShowCashoutModal(true);
     }
