@@ -68,7 +68,7 @@ const Landing = () => {
         const updated = [newNotification, ...prev].slice(0, 3); // Keep only 3 latest
         return updated;
       });
-    }, 4000); // Show new notification every 4 seconds
+    }, 300000); // Show new notification every 5 minutes (300,000 milliseconds)
 
     return () => {
       clearInterval(timer);
