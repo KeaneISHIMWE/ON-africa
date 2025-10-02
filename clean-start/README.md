@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# ON AFRICA - Earn Money Watching Videos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A professional React application that allows users to earn money by watching videos. Features a complete business platform with membership system, earnings tracking, and payment processing.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Landing Page**: Welcoming interface with live earning notifications
+- **User Registration**: Secure signup with payment verification
+- **Login System**: Professional authentication flow
+- **Business Dashboard**: Complete earnings management system
+- **Membership System**: Premium membership with enhanced features
+- **Video Earning**: Watch videos and earn 20,000 FRW daily
+- **Cashout System**: Secure payment processing via MTN Mobile Money
+- **Real-time Notifications**: Live earning updates from other users
+- **Responsive Design**: Mobile-first approach with professional UI
 
-### `npm start`
+## 🎯 Business Model
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Registration Fee: 3,900 FRW
+- Premium Membership: 18,800 FRW
+- Daily Earnings: Up to 20,000 FRW per video
+- Welcome Bonus: 7,500 FRW
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Technology Stack
 
-### `npm test`
+- **Frontend**: React 19.2.0
+- **Routing**: React Router DOM 7.9.3
+- **Styling**: Custom CSS with professional animations
+- **Build Tool**: Create React App
+- **Deployment**: Vercel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏃‍♂️ Getting Started
 
-### `npm run build`
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Start development server: `npm start`
+4. Build for production: `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🌐 Deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This project is optimized for Vercel deployment with:
+- Custom routing configuration
+- Production build optimization
+- PWA support with manifest.json
+- Custom favicon and branding
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 📱 PWA Features
 
-### `npm run eject`
+- Custom favicon with brand colors
+- App manifest for mobile installation
+- Offline-ready configuration
+- Professional branding throughout
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Built with ❤️ for the ON AFRICA community

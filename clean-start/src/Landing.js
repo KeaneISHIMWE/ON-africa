@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './App.css';
 
@@ -7,7 +7,7 @@ const Landing = () => {
   const [notifications, setNotifications] = useState([]);
   const navigate = useNavigate();
 
-  const names = [
+  const names = useMemo(() => [
     'Sarah Johnson', 'David Smith', 'Maria Garcia', 'John Wilson', 'Anna Brown',
     'Michael Davis', 'Lisa Anderson', 'James Miller', 'Jennifer Taylor', 'Robert Johnson',
     'Patricia Wilson', 'Christopher Lee', 'Michelle Martin', 'Daniel Garcia', 'Jessica Davis',
@@ -33,16 +33,16 @@ const Landing = () => {
     'Theresa Woods', 'Jeremy West', 'Cheryl Cole', 'Wayne Jordan', 'Mildred Owens',
     'Christian Reynolds', 'Katherine Fisher', 'Sean Ellis', 'Gloria Stone', 'Elijah Boyd',
     'Jean Mason', 'Ralph Hunt', 'Alice Dixon', 'Mason Rice', 'Madison Wells'
-  ];
+  ], []);
 
-  const getRandomAmount = () => {
+  const getRandomAmount = useCallback(() => {
     const amounts = [15000, 18000, 22000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000, 65000, 70000];
     return amounts[Math.floor(Math.random() * amounts.length)];
-  };
+  }, []);
 
-  const getRandomName = () => {
+  const getRandomName = useCallback(() => {
     return names[Math.floor(Math.random() * names.length)];
-  };
+  }, [names]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -74,7 +74,7 @@ const Landing = () => {
       clearInterval(timer);
       clearInterval(notificationTimer);
     };
-  }, []);
+  }, [getRandomName, getRandomAmount]);
 
   const formatTime = (seconds) => {
     const hours = Math.floor(seconds / 3600);

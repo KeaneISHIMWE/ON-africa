@@ -13,7 +13,6 @@ const Dashboard = () => {
     dailyEarnings: 0
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
   const [showMembershipModal, setShowMembershipModal] = useState(false);
   const [showCashoutModal, setShowCashoutModal] = useState(false);
   const [message, setMessage] = useState('');
@@ -127,12 +126,13 @@ const Dashboard = () => {
     setLoading(false);
   };
   
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userEmail');
-    localStorage.removeItem('userData');
-    navigate('/');
-  };
+  // Logout functionality available in profile section
+  // const handleLogout = () => {
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('userEmail');
+  //   localStorage.removeItem('userData');
+  //   navigate('/');
+  // };
 
   if (loading) return (
     <div className="dashboard-container">
@@ -143,13 +143,7 @@ const Dashboard = () => {
     </div>
   );
   
-  if (error) return (
-    <div className="dashboard-container">
-      <div className="dashboard-box">
-        <div className="error-msg">{error}</div>
-      </div>
-    </div>
-  );
+  // Error handling removed as not currently used
 
   return (
     <div className="dashboard-main-layout">
