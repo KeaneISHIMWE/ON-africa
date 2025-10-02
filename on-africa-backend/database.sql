@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS on_africa_db;
+USE on_africa_db;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    payment_screenshot VARCHAR(255) NOT NULL,
+    registration_fee DECIMAL(10,2) DEFAULT 3900.00,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
