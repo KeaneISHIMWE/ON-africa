@@ -81,8 +81,8 @@ app.post('/api/register', upload.single('screenshot'), async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const screenshotPath = req.file.path;
 
-    const sql = 'INSERT INTO users (username, phone, email, password, payment_screenshot, registration_fee) VALUES (?, ?, ?, ?, ?, 3900)';
-    db.query(sql, [username, phone, email, hashedPassword, screenshotPath], (err, result) => {
+  const sql = 'INSERT INTO users (username, phone, email, password, payment_screenshot, registration_fee) VALUES (?, ?, ?, ?, ?, 3900)';
+  connection.query(sql, [username, phone, email, hashedPassword, screenshotPath], (err, result) => {
       if (err) {
         return res.status(500).json({ message: 'Error registering user' });
       }
@@ -102,7 +102,35 @@ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body;
 
     const sql = 'SELECT * FROM users WHERE email = ?';
-    db.query(sql, [email], async (err, results) => {
+  connection.query(sql, [email], async (err, results) => {
+// Middleware to verify JWT
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) return res.status(401).json({ message: 'No token provided' });
+  jwt.verify(token, 'your_jwt_secret', (err, user) => {
+    if (err) return res.status(403).json({ message: 'Invalid token' });
+    req.user = user;
+    next();
+  });
+}
+
+// Get user info for dashboard
+app.get('/api/user', authenticateToken, (req, res) => {
+  const userId = req.user.userId;
+  connection.query('SELECT id, username, email FROM users WHERE id = ?', [userId], (err, results) => {
+    if (err || results.length === 0) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    const user = results[0];
+    res.json({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      bonus: 7500
+    });
+  });
+});
       if (err) throw err;
 
       if (results.length === 0) {
